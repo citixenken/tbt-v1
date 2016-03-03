@@ -1,0 +1,29 @@
+extends layout
+
+block content
+    .page-header
+        h3 My Books Collection
+        if books
+            ul.text-capitalize
+                for book in books
+                    li= book.booktitle
+                        ul= book.authorname
+
+    p.lead Add Book to our Database
+        form.form-horizontal(role='form', method='POST')
+            input(type='hidden', name='_csrf', value=_csrf)
+            .form-group
+                label(class='col-sm-2 control-label', for='booktitle') Book Title
+                .col-sm-8
+                    input.form-control(type='text', name='booktitle', id='booktitle', autofocus=true)
+            .form-group
+                label(class='col-sm-2 control-label', for='authorname') Name of Author
+                .col-sm-8
+                    input.form-control(type='text', name='authorname', id='authorname')
+            .form-group
+                label(class='col-sm-2 control-label', for='isbn') ISBN
+                .col-sm-8
+                    input.form-control(type='text', name='isbn', id='isbn')
+            .form-group
+                .col-sm-offset-2.col-sm-8
+                    button.btn.btn-primary(type='submit') Add Book
