@@ -20,7 +20,7 @@ router.get('/', function(req, res, next){
 router.post('/', function(req, res, next){
 
   var query = {};
-  console.log(req.body);
+  //console.log(req.body);
   for (var k in req.body){
   	if ('_csrf' === k) continue;
 
@@ -31,6 +31,11 @@ router.post('/', function(req, res, next){
   //query.userId= req.user.id;
   Book.find(query, function(err, docs){
     if (err) return next(err);
+
+    if (docs.length === 0){
+      req.flash('errors', { msg: 'No book matching that criteria is in our database.'});
+    }
+    
     res.render('search', { searches: docs });
   });
 
