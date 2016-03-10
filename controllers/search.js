@@ -12,7 +12,9 @@ var router = module.exports = express.Router();
 // GET /searches
 
 router.get('/', function(req, res, next){
-  res.render('search');
+  res.render('search', {
+    title: 'Search'
+  });
 });
 
 // POST /searches

@@ -6,8 +6,12 @@ block content
         if searches
             ol.text-capitalize 
                 for search in searches
-                    li.text-success= search.booktitle
+                    li.text-success= search.booktitle 
                         ul.text-success= search.authorname
+                        p
+                            a.btn.btn-default(href='#', role='button') View details »
+                        br
+
                         
     p.lead Search Book in our Database
         form(role='form', method="POST", style='max-width: 300px;')
