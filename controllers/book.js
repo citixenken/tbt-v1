@@ -7,7 +7,9 @@
 
  exports.getBooks = function(req, res){
  	Book.find({ userId: req.user.id }, function(err, docs){
- 		res.render('books', { books: docs });
+ 		res.render('books', { 
+      title: 'Add Book',
+      books: docs });
  	});
  };
 
